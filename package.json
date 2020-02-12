@@ -1,0 +1,32 @@
+{
+  "name": "projeto-sono",
+  "version": "0.0.1",
+  "description": "Projeto Sono - Desenvolvido para a Associação Brasileira do Sono",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev:start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaisen-san/projeto-sono.git"
+  },
+  "author": "Felipe Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaisen-san/projeto-sono/issues"
+  },
+  "homepage": "https://github.com/Kaisen-san/projeto-sono#readme",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.8",
+    "pg": "^7.18.1"
+  }
+}
