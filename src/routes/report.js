@@ -13,6 +13,6 @@ router.get('/', middleware.checkAuthenticated, controller.renderMain)
 router.post('/', middleware.authenticateToken, controller.generateReport)
 router.get('/login', middleware.checkDeauthenticated, controller.renderLogin)
 router.post('/login', middleware.authenticateUser)
-router.delete('/logout', middleware.deauthenticateUser)
+router.delete('/logout', middleware.authenticateToken, middleware.deauthenticateUser)
 
 module.exports = router

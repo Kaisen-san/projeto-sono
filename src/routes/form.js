@@ -14,6 +14,6 @@ router.put('/', middleware.authenticateToken, controller.updateForm)
 router.post('/', middleware.authenticateToken, controller.createNewForm)
 router.get('/login', middleware.checkDeauthenticated, controller.renderLogin)
 router.post('/login', middleware.authenticateUser)
-router.delete('/logout', middleware.deauthenticateUser)
+router.delete('/logout', middleware.authenticateToken, middleware.deauthenticateUser)
 
 module.exports = router
