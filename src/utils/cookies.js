@@ -22,7 +22,7 @@ const generateTokenCookie = (tokenName, signPayload) => {
     { expiresIn: '7d' }
   )
 
-  return `${tokenName}=${token}; max-age=604800` // 7 days timestamp in seconds
+  return `${tokenName}=${token}; max-age=604800; path=/` // 7 days timestamp in seconds
 }
 
 const isToRenewTokenCookie = (expirationTimestamp) => {
@@ -36,7 +36,7 @@ const isToRenewTokenCookie = (expirationTimestamp) => {
 }
 
 const generateRemovableTokenCookie = (tokenName) => {
-  return `${tokenName}= ; max-age=0`
+  return `${tokenName}= ; max-age=0; path=/`
 }
 
 module.exports = {
