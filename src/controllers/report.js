@@ -12,9 +12,11 @@ const renderLogin = (req, res, next) => {
 }
 
 const generateReport = async (req, res, next) => {
-  const { year, state } = req.body
+  const { year, state, acceptTerms } = req.body
 
-  if (!Number.isSafeInteger(year) || typeof state !== 'string') {
+  if (typeof state !== 'string'
+    || !Number.isSafeInteger(year)
+    || !Number.isSafeInteger(acceptTerms)) {
     return res.status(400).json({
       error: ERROR_MESSAGES.INVALID_REQUEST_DATA
     })
@@ -45,8 +47,18 @@ const generateReport = async (req, res, next) => {
     id_form: form.id
   }
 
+  let reportNameState = 'TodosEstados'
+
   if (state !== 'ALL') {
     answersFilter.state = state
+    reportNameState = state
+  }
+
+  let reportNameTerms = 'AmbosTermos'
+
+  if (acceptTerms !== -1) {
+    answersFilter.accept_terms = acceptTerms
+    reportNameTerms = acceptTerms === 1 ? 'AceitouTermos' : 'NaoAceitouTermos'
   }
 
   const answers = await db
@@ -61,9 +73,8 @@ const generateReport = async (req, res, next) => {
 
   const reportHeaders = `ID;AnoRelatorio;AnoResposta;Concorda${headers.reduce((acc, cur) => `${acc};${cur.report}`, '')}`
   const reportAnswers = answers.reduce((acc, cur) => `${acc}${cur.id};${form.year};${cur.year};${Number(cur.acceptTerms)};${cur.report}\n`, '')
-
-  const reportName = `Report_${form.year}_${state}.csv`
   const reportContent = `${reportHeaders}\n${reportAnswers}`
+  const reportName = `Report_${form.year}_${reportNameState}_${reportNameTerms}.csv`
 
   res.setHeader('Cache-Control', 'no-cache')
   res.setHeader('Content-Type', 'text/csv; charset=utf-8')
