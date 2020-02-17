@@ -135,16 +135,13 @@ main::after {
   align-items: center;
   color: #fff;
   z-index: 9999;
+  text-decoration: none;
+  outline: none;
 }
 
 .company__address,
 .company__phone {
   margin-right: 5em;
-}
-
-.company__email {
-  text-decoration: none;
-  outline: none;
 }
 
 .company__icon {
