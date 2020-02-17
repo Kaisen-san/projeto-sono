@@ -11,7 +11,7 @@
 body {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   min-width: 360px;
   height: 100vh;
   font-family: 'Lato', sans-serif;
@@ -223,6 +223,7 @@ main::after {
   background-color: #fff;
   color: #30287b;
   border: 1px solid #0d2a49;
+  outline: none;
 }
 
 footer {

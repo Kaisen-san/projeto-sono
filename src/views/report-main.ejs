@@ -20,23 +20,27 @@
       <h4 class='report__title'>Faça o download dos resultados</h4>
       <div class="filters">
         <div class='filter'>
-          <h4 class='filter__title'>Ano do Formulário:</h4>
+          <h4 class='filter__title'>Ano do Questionário:</h4>
           <select class='filter__selector' name='year'>
-            <option value='2020'>Último Ano</option>
-            <option value='2020'>2020</option>
+            <option value='-1'>Último disponível</option>
+            <% years.forEach((year, index) => { %>
+              <option value='<%= year %>'><%= year %></option>
+            <% }) %>
           </select>
         </div>
         <div class='filter'>
           <h4 class='filter__title'>Estado das Respostas:</h4>
           <select class='filter__selector' name='state'>
-            <option value='ALL'>Todos os estados</option>
-            <option value='SP'>São Paulo</option>
+            <option value='-1'>Todos os estados</option>
+            <% states.forEach(state => { %>
+              <option value='<%= state %>'><%= state %></option>
+            <% }) %>
           </select>
         </div>
         <div class='filter'>
           <h4 class='filter__title'>Termos de Uso:</h4>
           <select class='filter__selector' name='acceptTerms'>
-            <option value='-1'>Ambos</option>
+            <option value='-1'>Ambos termos</option>
             <option value='1'>Aceitou</option>
             <option value='0'>Não aceitou</option>
           </select>
