@@ -28,6 +28,6 @@ app.use((req, res, next) => {
 app.get('/', (req, res, next) => res.redirect('/report'))
 app.use('/api/v1', apiv1Router)
 app.use('/report', reportRouter)
-app.use('/form', formRouter)
+// app.use('/form', formRouter)
 
 app.listen(PORT, () => { console.log(`Server listening at port ${PORT}`) })

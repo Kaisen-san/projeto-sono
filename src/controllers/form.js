@@ -27,5 +27,5 @@ module.exports = {
   renderMain,
   renderLogin,
   updateForm,
-  createNewForm,
+  createNewForm
 }
