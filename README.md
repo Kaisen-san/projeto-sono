@@ -8,14 +8,26 @@
 npm install
 ```
 
-### Execution
+### Usage
 
-Production mode:
+**Production mode:**
+
+- In one command prompt, run:
+
 ```
 npm start
 ```
 
-Dev mode:
+**Dev mode:**
+
+- In one command prompt, run:
+
 ```
-npm run dev:start
+npm run start:dev
+```
+
+- In another command prompt, run:
+
+```
+npm run watch
 ```
