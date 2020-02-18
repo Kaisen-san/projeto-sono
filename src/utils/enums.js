@@ -5,15 +5,15 @@ const REALMS = {
 }
 
 const ERROR_MESSAGES = {
-  INVALID_PASSWORD: 'Invalid password. Please try again with a valid password.',
-  INVALID_CREDENTIALS: 'Invalid username and/or password. Please try again with valid credentials.',
-  NO_FORM_AVAILABLE: 'There is no form available at this moment. Please try again later.',
-  INVALID_FORM_ID: 'There is no form available with the given id. Please try again with a valid id.',
-  INVALID_FORM_YEAR: 'There is no form available with the given year. Please try again with a valid year.',
-  INVALID_REQUEST_DATA: 'Invalid request data. Make sure you are sending all the required fields.',
-  INVALID_TOKEN: 'Invalid token. Please try again with a valid token.',
-  INVALID_TOKEN_REALM: 'Invalid token realm. Please try again with a valid token realm.',
-  INTERNAL_SERVER_ERROR: 'An internal server error has occured while processing the request. Please try again later.'
+  INVALID_PASSWORD: 'Senha inválida. Por favor, tente novamente com uma senha válida.',
+  INVALID_CREDENTIALS: 'Senha inválida usuário e/ou senha. Por favor, tente novamente com credenciais válidas.',
+  NO_FORM_AVAILABLE: 'Não há questionário disponível no momento. Por favor, tente novamente mais tarde.',
+  INVALID_FORM_ID: 'Não há questionário disponível com o id informado. Por favor, tente novamente com um id válido.',
+  INVALID_FORM_YEAR: 'Não há questinário disponível com o ano informado. Por favor, tente novamente com um ano válido.',
+  INVALID_REQUEST_DATA: 'Dados da requisição inválidos. Certifique-se de enviar todos os campos necessários.',
+  INVALID_TOKEN: 'Token inválido. Por favor, tente novamente com um token válido.',
+  INVALID_TOKEN_REALM: 'Domínio do token inválido. Por favor, tente novamente com um domínio de token válido.',
+  INTERNAL_SERVER_ERROR: 'Ocorreu um erro interno no servidor ao processar a requisição. Por favor, tente novamente mais tarde.'
 }
 
 const QUESTION_TYPES = {
