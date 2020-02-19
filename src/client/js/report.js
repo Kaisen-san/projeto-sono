@@ -63,8 +63,8 @@
       .then(response => {
         const url = window.URL.createObjectURL(new Blob([response.data]))
         const link = document.createElement('a')
-        const contentDisposition = response.headers['content-disposition'];
-        let fileName = 'output.csv';
+        const contentDisposition = response.headers['content-disposition']
+        let fileName = 'output.csv'
 
         if (contentDisposition) {
           const fileNameMatch = contentDisposition.match(/filename=(.+)/)
@@ -78,8 +78,8 @@
         link.setAttribute('download', fileName)
         document.body.appendChild(link)
         link.click()
-        link.remove();
-        window.URL.revokeObjectURL(url);
+        link.remove()
+        window.URL.revokeObjectURL(url)
       })
       .catch(e => {
         console.error(e)
