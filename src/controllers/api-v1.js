@@ -16,6 +16,19 @@ const retrieveForm = async (req, res, next) => {
       })
     }
 
+    // No SQL Joins are used here because we want to preserve the form questions order,
+    // which wouldn't be possible using Joins since its 'on' condition matches columns
+    // as they come up, which would be a problem whenever a question was updated
+    // because it goes to the bottom of its table (at least on PostgreSQL)
+    const formQuestions = await db
+      .select({
+        idQuestion: 'id_question'
+      })
+      .from('form_questions')
+      .where({ id_form: form.id })
+
+    const questionsIds = formQuestions.map(({ idQuestion }) => idQuestion)
+
     const questions = await db
       .select({
         type: 'type',
@@ -23,9 +36,8 @@ const retrieveForm = async (req, res, next) => {
         answers: 'answers',
         triggers: 'triggers'
       })
-      .from('form_questions')
-      .leftJoin('questions', 'id_question', 'id')
-      .where({ id_form: form.id })
+      .from('questions')
+      .whereIn('id', questionsIds)
 
     const data = Model.parseQuestionsQuery(questions)
 
