@@ -10,7 +10,7 @@ const formRouter = require('./routes/form')
 const apiv1Router = require('./routes/api-v1')
 
 const app = express()
-const PORT = 4000 || process.env.PORT
+const PORT = process.env.PORT || 4000
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
