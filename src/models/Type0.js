@@ -15,14 +15,14 @@ module.exports = {
       type: "inputType"
     },
     {
+      type: "inputType"
+    },
+    {
+      type: "inputType"
+    },
+    {
       type: "options",
       hasTriggers: false
-    },
-    {
-      type: "inputType"
-    },
-    {
-      type: "inputType"
     }
   ],
   results: {
