@@ -24,7 +24,7 @@ const retrieveForm = async (req, res, next) => {
         triggers: 'triggers'
       })
       .from('form_questions')
-      .leftJoin('questions', 'id', 'id_question')
+      .leftJoin('questions', 'id_question', 'id')
       .where({ id_form: form.id })
 
     const data = Model.parseQuestionsQuery(questions)
