@@ -10,8 +10,8 @@
     "build": "npm run build:css:report && npm run build:js:report",
     "build:clean": "rimraf public/css/* public/js/*",
     "build:css:report": "cleancss src/client/css/common.css src/client/css/report.css -o public/css/report.min.css",
-    "build:js:report": "babel ./src/client/js/report.js | uglifyjs -mco ./public/js/report.min.js",
-    "watch": "watch 'npm run build -s' src"
+    "build:js:report": "babel ./src/client/js/utils.js ./src/client/js/report.js | uglifyjs -mco ./public/js/report.min.js",
+    "watch": "watch 'npm run build' src"
   },
   "repository": {
     "type": "git",

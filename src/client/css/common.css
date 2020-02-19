@@ -16,3 +16,41 @@ a {
   text-decoration: none;
   outline: none;
 }
+
+.alert {
+  position: fixed;
+  right: 1.5em;
+  bottom: calc(3% + 25px);
+  font-size: .8rem;
+  padding: .5em 1em;
+  border-radius: .5em;
+  border: 1px solid #0d2a49;
+  text-align: center;
+  color: #0d2a49;
+  background-color: #f4f4f4;
+  z-index: 10000;
+  animation: fadein 2s normal;
+}
+
+.alert--bad {
+  color: #aa0000;
+  border: 1px solid #aa0000;
+}
+
+@keyframes fadein {
+  from { bottom: 0; }
+  to { bottom: calc(3% + 25x); }
+}
+
+@media only screen and (max-width: 600px) {
+  .alert {
+    left: 5em;
+    right: 5em;
+    bottom: calc(3% + 50px);;
+  }
+
+  @keyframes fadein {
+    from { bottom: 0; }
+    to { bottom: calc(3% + 50px);; }
+  }
+}

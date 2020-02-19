@@ -19,6 +19,7 @@
       })
       .catch(e => {
         console.error(e)
+        alert(e.response.data.error, ALERTS.BAD)
       })
     })
   }
@@ -39,6 +40,7 @@
       })
       .catch(e => {
         console.error(e)
+        alert(e.response.data.error, ALERTS.BAD)
       })
     })
   }
@@ -57,8 +59,6 @@
         year: parseInt($year.value),
         state: $state.value,
         acceptTerms: parseInt($acceptTerms.value)
-      }, {
-        responseType: 'blob'
       })
       .then(response => {
         const url = window.URL.createObjectURL(new Blob([response.data]))
@@ -83,6 +83,7 @@
       })
       .catch(e => {
         console.error(e)
+        alert(e.response.data.error, ALERTS.BAD)
       })
     })
   }
