@@ -31,6 +31,7 @@ const retrieveForm = async (req, res, next) => {
 
     const questions = await db
       .select({
+        id: 'id',
         type: 'type',
         headers: 'headers',
         answers: 'answers',
@@ -39,7 +40,15 @@ const retrieveForm = async (req, res, next) => {
       .from('questions')
       .whereIn('id', questionsIds)
 
-    const data = Model.parseQuestionsQuery(questions)
+    // It is necessary to manually reorder the questions because the solution above
+    // doesn't work for all PostgreSQL instances. The reason is still unknown, but
+    // even after changing some of PostgreSQL flags, like join_collapse_limit and
+    // from_collapse_limit, doesn't change this behavior
+    const orderedQuestions = []
+
+    questionsIds.forEach(id => orderedQuestions.push(questions.find(q => q.id === id)))
+
+    const data = Model.parseQuestionsQuery(orderedQuestions)
 
     res.status(200).json({
       info: {
