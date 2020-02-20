@@ -14,12 +14,6 @@ DROP TABLE IF EXISTS results;
 DROP TABLE IF EXISTS forms;
 DROP TABLE IF EXISTS questions;
 
-CREATE TABLE IF NOT EXISTS users (
-  id SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(30) UNIQUE NOT NULL,
-  password CHAR(60) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS forms (
   id SERIAL PRIMARY KEY NOT NULL,
   password CHAR(60) NOT NULL,
@@ -51,9 +45,14 @@ CREATE TABLE IF NOT EXISTS results (
   CONSTRAINT state_check CHECK (state IN ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO')) 
 );
 
-INSERT INTO users (username, password) VALUES ('absono', '$2a$10$ngT5FF7Tjc0G87thEFIIiOKVmKsYF/jSLAGxWwEEry18g/ZhLj/Fe');
+CREATE TABLE IF NOT EXISTS results_users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  password CHAR(60) NOT NULL
+);
 
 INSERT INTO forms (year, password) VALUES (2020, '$2a$10$VpvRNswwVyYRj8S0MQlVROtQpsuApp9.9k9no7KSgqLKg3KSTsb8y');
+
+INSERT INTO results_users (password) VALUES ('$2b$10$aO.ESDdlZWzhxDUxaCyvcuGDsV3e6KlU5TwI7dy5/WVv14yf/f2rK');
 
 INSERT INTO questions (type, headers, answers, triggers, report) VALUES
 (0, 'Cidade:|Estado:|Local de resposta:|Idade:|Peso (kg):|Altura (cm):|Sexo:', 'text;AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO;text;numeric;numeric;numeric;Masculino|Feminino', NULL, 'Cidade;Estado;LocalQuestionario;Idade;Peso;Altura;Sexo'),

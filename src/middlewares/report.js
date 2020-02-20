@@ -20,19 +20,23 @@ const authenticateUser = async (req, res, next) => {
   }
 
   try {
-    const form = await db
-      .select({ hashedPassword: 'password' })
+    const { numberOfForms } = await db
+      .count('* AS numberOfForms')
       .from('forms')
-      .orderBy('year', 'desc')
       .first()
 
-    if (form == null) {
+    if (numberOfForms == null || numberOfForms == 0) {
       return res.status(404).json({
         error: ERROR_MESSAGES.NO_FORM_AVAILABLE
       })
     }
 
-    if (!await bcrypt.compare(password, form.hashedPassword)) {
+    const { hashedPassword } = await db
+      .select({ hashedPassword: 'password' })
+      .from('results_users')
+      .first()
+
+    if (!await bcrypt.compare(password, hashedPassword)) {
       return res.status(401).json({
         error: ERROR_MESSAGES.INVALID_PASSWORD
       })
