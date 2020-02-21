@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS results_users (
   password CHAR(60) NOT NULL
 );
 
-INSERT INTO forms (year, password) VALUES (2020, '$2a$10$VpvRNswwVyYRj8S0MQlVROtQpsuApp9.9k9no7KSgqLKg3KSTsb8y');
+INSERT INTO forms (year, password) VALUES (2020, '$2b$10$ZD2sDuvM3fr2HlWgMu8Ml.zwApf4S2/LMlkSV2wWfkVPCRcr0ITzy');
 
 INSERT INTO results_users (password) VALUES ('$2b$10$aO.ESDdlZWzhxDUxaCyvcuGDsV3e6KlU5TwI7dy5/WVv14yf/f2rK');
 
