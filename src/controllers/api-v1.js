@@ -107,7 +107,7 @@ const uploadResult = async (req, res, next) => {
         })
       }
 
-      report += question.answers.reduce((acc, cur) => acc + ';' + cur, '')
+      report += question.answers.reduce((acc, cur) => acc + ';' + cur.replace(/;/g, ','), '')
     }
 
     report = report.substr(1) // removes first ';'
