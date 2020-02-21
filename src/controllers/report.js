@@ -73,11 +73,34 @@ const generateReport = async (req, res, next) => {
       })
     }
 
-    const headers = await db
-      .select({ report: 'report' })
+    // No SQL Joins are used here because we want to preserve the form questions order,
+    // which wouldn't be possible using Joins since its 'on' condition matches columns
+    // as they come up, which would be a problem whenever a question was updated
+    // because it goes to the bottom of its table (at least on PostgreSQL)
+    const formQuestions = await db
+      .select({
+        idQuestion: 'id_question'
+      })
       .from('form_questions')
-      .leftJoin('questions', 'id', 'id_question')
       .where({ id_form: form.id })
+
+    const questionsIds = formQuestions.map(({ idQuestion }) => idQuestion)
+
+    const headers = await db
+      .select({
+        id: 'id',
+        report: 'report'
+      })
+      .from('questions')
+      .whereIn('id', questionsIds)
+
+    // It is necessary to manually reorder the questions because the solution above
+    // doesn't work for all PostgreSQL instances. The reason is still unknown, but
+    // even after changing some of PostgreSQL flags, like join_collapse_limit and
+    // from_collapse_limit, doesn't change this behavior
+    const orderedHeaders = []
+
+    questionsIds.forEach(id => orderedHeaders.push(headers.find(q => q.id === id)))
 
     const answersFilter = {
       id_form: form.id
@@ -108,7 +131,7 @@ const generateReport = async (req, res, next) => {
       .where(answersFilter)
       .orderBy('id', 'asc')
 
-    const reportHeaders = `ID;AnoQuestionario;AnoResposta;Concorda${headers.reduce((acc, cur) => `${acc};${cur.report}`, '')}`
+    const reportHeaders = `ID;AnoQuestionario;AnoResposta;Concorda${orderedHeaders.reduce((acc, cur) => `${acc};${cur.report}`, '')}`
     const reportAnswers = answers.reduce((acc, cur) => `${acc}${cur.id};${form.year};${cur.year};${Number(cur.acceptTerms)};${cur.report}\n`, '')
     const reportContent = `${reportHeaders}\n${reportAnswers}`
     const reportName = `Report_${form.year}_${reportNameState}_${reportNameTerms}.csv`
