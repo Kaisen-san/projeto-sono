@@ -1,19 +1,3 @@
-\c postgres
-
-DROP DATABASE semanasono;
-CREATE DATABASE semanasono WITH ENCODING = 'UTF8' TEMPLATE = template0;
-
-\c semanasono
-
-CREATE USER absono WITH ENCRYPTED PASSWORD 'sono';
-GRANT ALL PRIVILEGES ON DATABASE semanasono TO absono;
-
-DROP TABLE IF EXISTS results_users;
-DROP TABLE IF EXISTS form_questions;
-DROP TABLE IF EXISTS results;
-DROP TABLE IF EXISTS forms;
-DROP TABLE IF EXISTS questions;
-
 CREATE TABLE IF NOT EXISTS forms (
   id SERIAL PRIMARY KEY NOT NULL,
   password CHAR(60) NOT NULL,
