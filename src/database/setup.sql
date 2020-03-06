@@ -41,7 +41,7 @@ INSERT INTO results_users (password) VALUES ('$2b$10$aO.ESDdlZWzhxDUxaCyvcuGDsV3
 INSERT INTO questions (type, headers, answers, triggers, report) VALUES
 (0, 'Cidade:|Estado:|Local de resposta:|Idade:|Peso (kg):|Altura (cm):|Sexo:', 'text;AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO;text;numeric;numeric;numeric;Masculino|Feminino', NULL, 'Cidade;Estado;LocalQuestionario;Idade;Peso;Altura;Sexo'),
 (9, 'Você tem filhos?|Quantos filhos:|Qual a idade deles:', 'Sim|Não;numeric;numeric', '1|0', 'Filhos;QuantosFilhos;IdadeFilhos'),
-(2, 'Qual a sua ocupação atual?|Se empregado, qual sua profissão?', 'Estudante|Empregado(a)|Aposentado(a)|Desempregado(a)|Não quero informar;text', '0|1|0|0|0', 'Ocupação;Profissão'),
+(2, 'Qual a sua ocupação atual?|Se empregado, qual a sua profissão?', 'Estudante|Empregado(a)|Aposentado(a)|Desempregado(a)|Não quero informar;text', '0|1|0|0|0', 'Ocupação;Profissão'),
 (3, 'Quantas horas você dorme por noite?|Nos dias da semana (trabalho/estudo):|Nos dias do final de semana (folga):', 'numeric;numeric', NULL, 'SonoSemana;SonoFDS'),
 (2, 'Você está satisfeito com a duração do seu sono durante a semana ou dias de trabalho ou estudo?|Se não, quantas horas gostaria de dormir?', 'Sim|Não|Eu não sei;numeric', '0|1|0', 'SatisfeitoSemana;GostariaSemana'),
 (2, 'Você está satisfeito com a duração do seu sono durante o final de semana ou dias de folga?|Se não, quantas horas gostaria de dormir?', 'Sim|Não|Eu não sei;numeric', '0|1|0', 'SatisfeitoFDS;GostariaFDS'),
