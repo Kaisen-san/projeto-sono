@@ -4,7 +4,7 @@ const controller = require('../controllers/report')
 const middleware = require('../middlewares/report')
 
 router.options('/*', (req, res, next) => {
-  res.header('Access-Control-Allow-Methods', ['GET', 'POST', 'DELETE'])
+  res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE')
 
   res.sendStatus(204)
 })

@@ -4,7 +4,7 @@ const controller = require('../controllers/api-v1')
 const middleware = require('../middlewares/api-v1')
 
 router.options('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Methods', ['GET', 'POST'])
+  res.header('Access-Control-Allow-Methods', 'GET, POST')
 
   res.sendStatus(204)
 })
