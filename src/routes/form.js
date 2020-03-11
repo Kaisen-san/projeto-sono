@@ -4,6 +4,7 @@ const controller = require('../controllers/form')
 const middleware = require('../middlewares/form')
 
 router.options('/*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
 
   res.sendStatus(204)
